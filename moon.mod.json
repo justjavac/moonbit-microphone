@@ -1,0 +1,19 @@
+{
+  "name": "justjavac/microphone",
+  "version": "0.1.0",
+  "deps": {
+    "justjavac/ffi": "0.2.1"
+  },
+  "readme": "README.mbt.md",
+  "repository": "https://github.com/justjavac/moonbit-microphone",
+  "license": "MIT",
+  "keywords": [
+    "moonbit",
+    "native",
+    "microphone",
+    "audio"
+  ],
+  "description": "Microphone capture device and session helpers.",
+  "source": "src",
+  "preferred-target": "native"
+}
