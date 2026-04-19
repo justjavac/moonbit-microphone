@@ -44,6 +44,20 @@ jobs:
           irm https://cli.moonbitlang.com/install/powershell.ps1 | iex
           "$env:USERPROFILE\.moon\bin" | Out-File -FilePath $env:GITHUB_PATH -Append
 
+      - name: Set up MSVC
+        if: runner.os == 'Windows'
+        uses: ilammy/msvc-dev-cmd@v1
+        with:
+          arch: x64
+
+      - name: Verify MSVC
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          where.exe cl
+          where.exe link
+          where.exe lib
+
       - name: Update MoonBit dependencies
         shell: pwsh
         run: moon update
