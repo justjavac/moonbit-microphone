@@ -1,5 +1,10 @@
 # justjavac/microphone
 
+[![coverage](https://img.shields.io/codecov/c/github/justjavac/moonbit-microphone/main?label=coverage)](https://codecov.io/gh/justjavac/moonbit-microphone)
+[![linux](https://img.shields.io/codecov/c/github/justjavac/moonbit-microphone/main?flag=linux&label=linux)](https://codecov.io/gh/justjavac/moonbit-microphone)
+[![macos](https://img.shields.io/codecov/c/github/justjavac/moonbit-microphone/main?flag=macos&label=macos)](https://codecov.io/gh/justjavac/moonbit-microphone)
+[![windows](https://img.shields.io/codecov/c/github/justjavac/moonbit-microphone/main?flag=windows&label=windows)](https://codecov.io/gh/justjavac/moonbit-microphone)
+
 Native-only microphone discovery and capture-session helpers.
 
 ```mbt nocheck
@@ -28,7 +33,3 @@ fn example_label {
   println(device.session_label())
 }
 ```
-
-Use `MicrophoneDevice::list()` for best-effort platform API discovery,
-`MicrophoneDevice::parse_listing` for deterministic tests, and
-`CaptureConfig::new` plus `normalized` before sizing capture chunks.
