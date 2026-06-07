@@ -31,7 +31,7 @@ pub fn MicrophoneDevice::parse_listing(
 ) -> Array[MicrophoneDevice] {
   let devices : Array[MicrophoneDevice] = []
   for line in output.split("\n").to_array() {
-    let name = line.trim().to_string()
+    let name = line.trim().to_owned()
     if name != "" && !is_monitor_name(name) {
       devices.push(parsed_device(name, devices.length()))
     }

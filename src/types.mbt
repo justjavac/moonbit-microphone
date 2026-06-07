@@ -69,7 +69,7 @@ fn[T : Debug] write_debug_show(value : T, logger : &Logger) -> Unit {
 /// The implementation keeps `inspect`, logs, and string interpolation aligned
 /// with the enum variant names while `CaptureState::label` remains the stable lowercase
 /// label for persisted settings.
-pub impl Show for CaptureState with output(self, logger : &Logger) -> Unit {
+pub impl Show for CaptureState with fn output(self, logger : &Logger) -> Unit {
   write_debug_show(self, logger)
 }
 
@@ -78,7 +78,7 @@ pub impl Show for CaptureState with output(self, logger : &Logger) -> Unit {
 ///
 /// This makes sample format values easy to print in tests and diagnostics
 /// without introducing a separate formatting table for the public enum.
-pub impl Show for SampleFormat with output(self, logger : &Logger) -> Unit {
+pub impl Show for SampleFormat with fn output(self, logger : &Logger) -> Unit {
   write_debug_show(self, logger)
 }
 
@@ -87,7 +87,7 @@ pub impl Show for SampleFormat with output(self, logger : &Logger) -> Unit {
 ///
 /// The full record is printed, which is useful when checking normalized
 /// settings or comparing expected capture profiles in tests.
-pub impl Show for CaptureConfig with output(self, logger : &Logger) -> Unit {
+pub impl Show for CaptureConfig with fn output(self, logger : &Logger) -> Unit {
   write_debug_show(self, logger)
 }
 
@@ -97,6 +97,6 @@ pub impl Show for CaptureConfig with output(self, logger : &Logger) -> Unit {
 /// Device descriptors include state and default configuration, so using the
 /// derived representation gives callers a compact diagnostic view of discovery
 /// results.
-pub impl Show for MicrophoneDevice with output(self, logger : &Logger) -> Unit {
+pub impl Show for MicrophoneDevice with fn output(self, logger : &Logger) -> Unit {
   write_debug_show(self, logger)
 }
