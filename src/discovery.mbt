@@ -26,6 +26,18 @@ fn parsed_device(name : String, id_number : Int) -> MicrophoneDevice {
 /// `CaptureConfig::new()` defaults and starts in `Idle`, which keeps tests
 /// deterministic even when the host platform reports devices in a different
 /// order.
+///
+/// # Example
+/// ```mbt check
+/// test "parse_listing assigns dense ids and drops monitors" {
+///   let devices = MicrophoneDevice::parse_listing(
+///     "Built-in Mic\nMonitor of Output\nUSB Mic\n",
+///   )
+///   assert_eq(devices.length(), 2)
+///   assert_eq(devices[0].id, "mic-0")
+///   assert_eq(devices[1].name, "USB Mic")
+/// }
+/// ```
 pub fn MicrophoneDevice::parse_listing(
   output : String,
 ) -> Array[MicrophoneDevice] {
@@ -47,6 +59,13 @@ pub fn MicrophoneDevice::parse_listing(
 /// and macOS uses Core Audio device properties. If the platform API is
 /// unavailable, blocked, or returns no capture devices, the function returns an
 /// empty array instead of raising.
+///
+/// # Example
+/// ```mbt nocheck
+/// for device in @microphone.MicrophoneDevice::list() {
+///   println(device.session_label())
+/// }
+/// ```
 pub fn MicrophoneDevice::list() -> Array[MicrophoneDevice] {
   MicrophoneDevice::parse_listing(native_microphone_listing_text())
 }

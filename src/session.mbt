@@ -20,6 +20,13 @@ pub fn MicrophoneDevice::is_live(self : MicrophoneDevice) -> Bool {
 /// compact string is easier to persist than a debug representation. They are
 /// intentionally independent of the derived `Show` output so future internal
 /// formatting changes do not affect persisted labels.
+///
+/// # Example
+/// ```mbt check
+/// test "label returns a stable lowercase string" {
+///   assert_eq(CaptureState::Recording.label(), "recording")
+/// }
+/// ```
 pub fn CaptureState::label(self : CaptureState) -> String {
   match self {
     Idle => "idle"
