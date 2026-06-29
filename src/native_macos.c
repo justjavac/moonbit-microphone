@@ -7,9 +7,7 @@
 #include <dlfcn.h>
 #include <stdlib.h>
 
-#ifndef kAudioObjectPropertyElementMain
-#define kAudioObjectPropertyElementMain kAudioObjectPropertyElementMaster
-#endif
+#define MOONBIT_AUDIO_OBJECT_PROPERTY_ELEMENT_MAIN 0
 
 typedef OSStatus (*MoonBitAudioGetPropertyDataSize)(
   AudioObjectID,
@@ -42,7 +40,7 @@ static UInt32 moonbit_microphone_macos_input_channels(
   AudioObjectPropertyAddress address = {
     kAudioDevicePropertyStreamConfiguration,
     kAudioDevicePropertyScopeInput,
-    kAudioObjectPropertyElementMain,
+    MOONBIT_AUDIO_OBJECT_PROPERTY_ELEMENT_MAIN,
   };
 
   UInt32 data_size = 0;
@@ -114,7 +112,7 @@ int moonbit_microphone_collect_platform(MoonBitMicrophoneBuffer *buffer) {
   AudioObjectPropertyAddress devices_address = {
     kAudioHardwarePropertyDevices,
     kAudioObjectPropertyScopeGlobal,
-    kAudioObjectPropertyElementMain,
+    MOONBIT_AUDIO_OBJECT_PROPERTY_ELEMENT_MAIN,
   };
 
   UInt32 data_size = 0;
@@ -158,7 +156,7 @@ int moonbit_microphone_collect_platform(MoonBitMicrophoneBuffer *buffer) {
       AudioObjectPropertyAddress name_address = {
         kAudioObjectPropertyName,
         kAudioObjectPropertyScopeGlobal,
-        kAudioObjectPropertyElementMain,
+        MOONBIT_AUDIO_OBJECT_PROPERTY_ELEMENT_MAIN,
       };
 
       if (
